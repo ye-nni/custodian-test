@@ -44,7 +44,7 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 ./generate.sh
 ```
 이때, 원하는 리소스(aws 서비스)만을 입력하여 `.yaml` 정책을 생성할 수 있습니다. 또는 `all`을 입력하면 모든 aws 리소스에 대해 정책이 만들어지고 policies 폴더에 저장됩니다. </br>
-(`./generate.sh`을 실행하면 `prompt.yaml`와 `mailer.yaml`이 생성되고, 이후에 "Enter resources to process (e.g. ec2 elbv2) or all:" 라고 뜨는데 여기에 리소스 이름 또는 `all` 입력)
+(`./generate.sh`을 실행하면 `prompt.yaml`와 `mailer.yaml`이 생성되고, 이후에 "Enter resources to process (e.g. ec2 elbv2) or all:" 라고 묻는데 여기에 리소스 이름 또는 `all` 입력)
 
 </br>
 </br>
