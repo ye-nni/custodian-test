@@ -59,7 +59,7 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 ```
 ./prompt.sh ec2*
 ```
-모든 정책이름(CHECKID)에 대해 즉각 조치를 취할 수도 있습니다.
+모든 정책(CHECKID)에 대해 즉각 조치를 취할 수도 있습니다.
 ```
 ./prompt.sh all
 ```
