@@ -7,7 +7,7 @@ policies:
     resource: aws.account
     mode:
       type: cloudtrail
-      role: {LAMBDA_ROLE}
+      role: ${LAMBDA_ROLE}
       events:
         - source: ec2.amazonaws.com
           event: DisableEbsEncryptionByDefault
@@ -20,8 +20,8 @@ policies:
         state: true
         key: arn:aws:kms:ap-northeast-2:311278774159:key/b2ce04c3-e17a-4da7-a491-d0d471ac4a8c
       - type: notify
-        template: default
-        template_format: slack
+        slack_template: slack_default
+        slack_msg_color: good
         violation_desc: |
           *** CHECKID: ec2_ebs_default_encryption ***
           • EC2 기본 EBS 암호화가 비활성화되어 자동 활성화 조치가 실행되었습니다.
@@ -29,10 +29,10 @@ policies:
           1. AWS Console에서 기본 EBS 암호화 설정을 확인해 주세요.
           2. 모든 신규 EBS 볼륨이 암호화되도록 디폴트 정책을 유지해 주세요.
         to:
-          - {SLACK_WEBHOOK}
+          - ${SLACK_WEBHOOK}
         transport:
           type: sqs
-          queue: {QUEUE_URL}
+          queue: ${QUEUE_URL}
 
   # CHECKID: ec2_ebs_volume_encryption
   # ACTIONPLAN: 비암호화된 EBS 볼륨 스냅샷 생성 및 삭제를 이메일로 알림
@@ -42,14 +42,14 @@ policies:
     mode:
       type: periodic
       schedule: "rate(1 day)"
-      role: {LAMBDA_ROLE}
+      role: ${LAMBDA_ROLE}
     filters:
       - Encrypted: false
     actions:
       - type: snapshot
       - type: notify
-        template: default
-        template_format: slack
+        slack_template: slack_default
+        slack_msg_color: warning
         violation_desc: |
           *** CHECKID: ec2_ebs_volume_encryption ***
           • 비암호화된 EBS 볼륨이 감지되어 스냅샷이 생성되었습니다.
@@ -57,10 +57,10 @@ policies:
           1. 스냅샷이 정상적으로 생성되었는지 확인해 주세요.
           2. 원본 볼륨 삭제 또는 암호화 적용을 검토해 주세요.
         to:
-          - {SLACK_WEBHOOK}
+          - ${SLACK_WEBHOOK}
         transport:
           type: sqs
-          queue: {QUEUE_URL}
+          queue: ${QUEUE_URL}
 
   # ACTIONPLAN: 비암호화된 스냅샷 암호화해서 복사 후 원본 삭제
   - name: ec2_ebs_volume_encryption-2
@@ -69,7 +69,7 @@ policies:
     mode:
       type: periodic
       schedule: "rate(1 day)"
-      role: {LAMBDA_ROLE}
+      role: ${LAMBDA_ROLE}
     filters:
       - Encrypted: false
     actions:
@@ -79,8 +79,8 @@ policies:
         target_key: alias/aws/ebs
       - type: delete
       - type: notify
-        template: default
-        template_format: slack
+        slack_template: slack_default
+        slack_msg_color: good
         violation_desc: |
           *** CHECKID: ec2_ebs_volume_encryption-2 ***
           • 비암호화된 EBS 스냅샷이 암호화 복사 후 원본이 삭제되었습니다.
@@ -88,10 +88,10 @@ policies:
           1. 암호화된 스냅샷이 정상적으로 생성되었는지 확인해 주세요.
           2. 원본(비암호화) 스냅샷이 삭제됐는지 확인해 주세요.
         to:
-          - {SLACK_WEBHOOK}
+          - ${SLACK_WEBHOOK}
         transport:
           type: sqs
-          queue: {QUEUE_URL}
+          queue: ${QUEUE_URL}
 
   # CHECKID: ec2_ebs_volume_snapshots_exists
   # ACTIONPLAN: 스냅샷 없는 EC2 인스턴스의 볼륨 스냅샷 생성 및 태그 복사
@@ -101,7 +101,7 @@ policies:
     mode:
       type: periodic
       schedule: "rate(1 day)"
-      role: {LAMBDA_ROLE}
+      role: ${LAMBDA_ROLE}
     filters:
       - type: snapshots
         count: 0
@@ -112,16 +112,16 @@ policies:
         tags:
           CloudCustodian: "true"
       - type: notify
-        template: default
-        template_format: slack
+        slack_template: slack_default
+        slack_msg_color: good
         violation_desc: |
           *** CHECKID: ec2_ebs_volume_snapshots_exists ***
           • 스냅샷이 존재하지 않는 EBS 볼륨이 감지되어 자동으로 스냅샷을 생성하였습니다.
         action_desc: |
           1. 스냅샷이 정상적으로 생성되었는지 확인해 주세요.
-          2. 복사된 태그(CloudCustodian: "true")가 정상적으로 적용됐는지 확인해 주세요.
+          2. 복사된 태그가 정상적으로 적용됐는지 확인해 주세요.
         to:
-          - {SLACK_WEBHOOK}
+          - ${SLACK_WEBHOOK}
         transport:
           type: sqs
-          queue: {QUEUE_URL}
+          queue: ${QUEUE_URL}
