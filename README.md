@@ -28,7 +28,7 @@ terraform apply
 환경변수 파일(.env)을 각자 환경에 맞게 채워넣어 주세요.(아래는 예시입니다)
 
 ```
-ACCOUNT_ID=0123456789
+ACCOUNT_ID=000123456789
 AWS_REGION=ap-northeast-2
 LAMBDA_ROLE=arn:aws:iam::000123456789:role/custodian-lambda-role
 MAILER_ROLE=arn:aws:iam::000123456789:role/custodian-mailer-role
