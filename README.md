@@ -46,12 +46,6 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 ```
 $ ./generate.sh
 Loaded environment from /home/sohneun22/custodian-test-2/.env:
-  ACCOUNT_ID    = 311278774159
-  AWS_REGION    = ap-northeast-2
-  LAMBDA_ROLE   = arn:aws:iam::311278774159:role/custodian-lambda-role
-  MAILER_ROLE   = arn:aws:iam::311278774159:role/custodian-lambda-role
-  SLACK_WEBHOOK = https://hooks.slack.com/services/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
-  QUEUE_URL     = https://sqs.ap-northeast-2.amazonaws.com/311278774159/custodian-sqs-temp
 
 ▶ Generating prompt/prompt.yaml
 ▶ Generating mailer/mailer.yaml
