@@ -43,8 +43,23 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 ```
 ./generate.sh
 ```
+```
+# 출력예시
+$ ./generate.sh
+Loaded environment from /home/sohneun22/custodian-test-2/.env:
+  ACCOUNT_ID    = 311278774159
+  AWS_REGION    = ap-northeast-2
+  LAMBDA_ROLE   = arn:aws:iam::311278774159:role/custodian-lambda-role
+  MAILER_ROLE   = arn:aws:iam::311278774159:role/custodian-lambda-role
+  SLACK_WEBHOOK = https://hooks.slack.com/services/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
+  QUEUE_URL     = https://sqs.ap-northeast-2.amazonaws.com/311278774159/custodian-sqs-temp
+
+▶ Generating prompt/prompt.yaml
+▶ Generating mailer/mailer.yaml
+
+Enter resources to process (e.g. ec2 elbv2) or all:
+```
 이때, 원하는 리소스(aws 서비스)만을 입력하여 `.yaml` 정책을 생성할 수 있습니다. 또는 `all`을 입력하면 모든 aws 리소스에 대해 정책이 만들어지고 policies 폴더에 저장됩니다. </br>
-(`./generate.sh`을 실행하면 `prompt.yaml`와 `mailer.yaml`이 생성되고, 이후에 "Enter resources to process (e.g. ec2 elbv2) or all:" 라고 묻는데 여기에 리소스 이름 또는 `all` 입력)
 
 </br>
 </br>
