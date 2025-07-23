@@ -44,7 +44,6 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 ./generate.sh
 ```
 ```
-# 출력예시
 $ ./generate.sh
 Loaded environment from /home/sohneun22/custodian-test-2/.env:
   ACCOUNT_ID    = 311278774159
