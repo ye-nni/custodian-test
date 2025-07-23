@@ -1,5 +1,5 @@
 # custodian-test
-> 테스트용이므로 각자 AWS 환경에서 잘 작동하는지 확인해 주세요.
+> WHS3-CloudGuardians팀 테스트용입니다. 각자 AWS 환경에서 잘 작동하는지 확인해 주세요.
 
 </br>
 
