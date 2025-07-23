@@ -51,7 +51,7 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 
 ### 수동 조치 방법
 `prompt.yaml`은 즉각 수동 조치가 필요할 경우를 대비한 정책 파일입니다.
-아래 명령어로 특정 정책이름(CHECKID)에 대해 즉각 조치를 취할 수 있습니다.
+아래 명령어로 특정 정책이름(CHECKID)에 대해 즉각 조치를 취할 수 있습니다. 여러 개의 정책이름 입력도 가능합니다.
 ```
 ./prompt.sh <정책이름>
 ```
