@@ -44,6 +44,8 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 ```
 
 이때, 원하는 리소스만을 선택하여 `.yaml` 정책을 생성할 수 있습니다. `all`을 입력하면 모든 aws 리소스에 대해 정책이 만들어지고 policies 폴더에 저장됩니다.
+
+</br>
 </br>
 
 ### 수동 조치 방법
