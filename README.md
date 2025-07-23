@@ -55,7 +55,11 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 ```
 ./prompt.sh <정책이름>
 ```
-또는 모든 정책이름(CHECKID)에 대해 즉각 조치를 취할 수도 있습니다.
+또는 다음과 같이 입력할 수도 있습니다.
+```
+./prompt.sh ec2*
+```
+모든 정책이름(CHECKID)에 대해 즉각 조치를 취할 수도 있습니다.
 ```
 ./prompt.sh all
 ```
@@ -63,7 +67,6 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 
 ### 추가할 부분
 - policies 폴더에서 정책 람다 배포를 빠르게 할 수 있는 셸 스크립트 작성.
-- `./prompt.sh *ec2` 이런식으로 입력했을 때 ec2로 시작하는 정책을 모두 조치하는 것도 좋을 듯.
 - 만약 사용자가 Cloud Custodian이 설치가 안되어 있는 경우 이에 대한 가이드를 제공해야 함. (prowler, terraform도 마찬가지)
 
 </br>
