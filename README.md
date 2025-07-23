@@ -38,7 +38,7 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 
 </br>
 
-`.yaml.template` 으로 `.yaml` 파일을 생성합니다.
+아래 명령어를 통해 `.yaml.template` 기반으로 `.yaml` 파일을 생성합니다.
 
 ```
 ./generate.sh
