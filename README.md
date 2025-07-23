@@ -70,9 +70,9 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 ### 참고
 |폴더명|역할|
 |:--:|:--:|
-|mailer|생성된 mailer.yaml 파일이 담길 폴더|
+|mailer|생성된 `mailer.yaml` 파일이 담길 폴더|
 |policies|생성된 Cloud Custodian 정책이 담길 폴더|
-|prompt|생성된 prompt.yaml 파일이 담길 폴더|
+|prompt|생성된 `prompt.yaml` 파일이 담길 폴더|
 |templates|`.yaml` 파일 생성을 위한 `.yaml.template`이 담긴 폴더|
 
 </br>
@@ -80,5 +80,5 @@ QUEUE_URL=https://sqs.ap-northeast-2.amazonaws.com/000123456789/custodian-notify
 |파일명|역할|
 |:--:|:--:|
 |generate.sh|templates 폴더의 `.yaml.template`을 `.env`를 통해 환경변수 주입해서 `.yaml`로 저장하는 스크립트|
-|prompt.sh|prompt.yaml를 통해 즉각적인 수동 조치를 취하는 스크립트|
-|prompt.yaml|기존 Cloud Custodian 정책에서 mode 필드를 제거한 정책|
+|prompt.sh|`prompt.yaml`를 통해 즉각적인 수동 조치를 취하는 스크립트|
+|prompt.yaml|기존 Cloud Custodian 정책에서 `mode` 필드를 제거한 정책|
